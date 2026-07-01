@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="/css/style.css"><title>JSON Formatter — ToolKit</title></head><body><nav><div class="container"><a href="/" class="logo"><span>🔧</span>ToolKit</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></nav><main class="tool-page"><div class="breadcrumb"><a href="/tools/">← All Tools</a></div><h1>JSON Formatter</h1><p class="tool-desc">Format and validate JSON data.</p><div class="box"><textarea id="txt" rows="8" placeholder="Paste JSON here..."></textarea><div style="margin-top:1rem"><button class="btn" onclick="fmt()">Format</button><button class="btn" onclick="min()">Minify</button><button class="btn btn-sm" onclick="cp()">Copy</button></div><div id="res" class="result" style="display:none;margin-top:1rem"></div></div></main><footer><div class="container"><p>© 2026 ToolKit</p><div><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a><a href="/terms.html">Terms</a></div></div></footer><script src="/js/main.js"></script><script>
+var r="";
+function fmt(){
+var t=document.getElementById("txt").value;
+if(!t)return;
+try{var o=JSON.parse(t);r=JSON.stringify(o,null,2);document.getElementById("res").textContent=r;document.getElementById("res").style.display="block";}catch(e){alert("Invalid JSON");}
+}
+function min(){
+var t=document.getElementById("txt").value;
+if(!t)return;
+try{var o=JSON.parse(t);r=JSON.stringify(o);document.getElementById("res").textContent=r;document.getElementById("res").style.display="block";}catch(e){alert("Invalid JSON");}
+}
+function cp(){navigator.clipboard.writeText(r).then(function(){alert("Copied!")});}
+</script></body></html>

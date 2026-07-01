@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="/css/style.css"><title>Word Counter — ToolKit</title></head><body><nav><div class="container"><a href="/" class="logo"><span>🔧</span>ToolKit</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></nav><main class="tool-page"><div class="breadcrumb"><a href="/tools/">← All Tools</a></div><h1>Word Counter</h1><p class="tool-desc">Count words, characters, sentences, paragraphs, and reading time.</p><div class="box"><textarea id="txt" rows="6" placeholder="Start typing or paste text..." oninput="calc()"></textarea><div class="grid" style="margin-top:1rem;grid-template-columns:repeat(3,1fr)"><div class="box" style="text-align:center;padding:1rem"><div id="w" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.8rem;color:var(--muted)">Words</div></div><div class="box" style="text-align:center;padding:1rem"><div id="c" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.8rem;color:var(--muted)">Chars</div></div><div class="box" style="text-align:center;padding:1rem"><div id="ns" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.8rem;color:var(--muted)">No Spaces</div></div><div class="box" style="text-align:center;padding:1rem"><div id="sen" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.8rem;color:var(--muted)">Sentences</div></div><div class="box" style="text-align:center;padding:1rem"><div id="p" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.8rem;color:var(--muted)">Paragraphs</div></div><div class="box" style="text-align:center;padding:1rem"><div id="rt" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0m</div><div style="font-size:.8rem;color:var(--muted)">Read Time</div></div></div></div><div class="faq"><h3>FAQ</h3><div class="faq-item"><h4>How is reading time calculated?</h4><p>Based on 200 words per minute average.</p></div></div></main><footer><div class="container"><p>© 2026 ToolKit</p><div><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a><a href="/terms.html">Terms</a></div></div></footer><script src="/js/main.js"></script><script>
+function calc(){
+var t=document.getElementById("txt").value;
+var tr=t.trim();
+var w=tr?tr.split(/\s+/).length:0;
+var c=t.length;
+var ns=t.replace(/\s/g,"").length;
+var sen=tr?tr.split(/[.!?]+/).filter(Boolean).length:0;
+var p=tr?tr.split(/\n\s*\n/).filter(Boolean).length:0;
+var rt=Math.ceil(w/200);
+document.getElementById("w").textContent=w;
+document.getElementById("c").textContent=c;
+document.getElementById("ns").textContent=ns;
+document.getElementById("sen").textContent=sen;
+document.getElementById("p").textContent=p;
+document.getElementById("rt").textContent=rt+"m";
+}
+</script></body></html>

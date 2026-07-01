@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="/css/style.css"><title>Age Calculator — ToolKit</title></head><body><nav><div class="container"><a href="/" class="logo"><span>🔧</span>ToolKit</a><div class="nav-links"><a href="/tools/">Tools</a><a href="/blog/">Blog</a><button class="theme-btn" onclick="toggleTheme()">🌙</button></div></div></nav><main class="tool-page"><div class="breadcrumb"><a href="/tools/">← All Tools</a></div><h1>Age Calculator</h1><p class="tool-desc">Calculate your exact age.</p><div class="box"><label style="font-size:.85rem;color:var(--muted)">Date of Birth</label><input type="date" id="dob" oninput="calc()" style="margin:.3rem 0 1rem"><div id="out" style="display:none"><div class="grid" style="grid-template-columns:repeat(4,1fr);gap:.5rem"><div class="box" style="text-align:center;padding:1rem"><div id="y" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.75rem;color:var(--muted)">Years</div></div><div class="box" style="text-align:center;padding:1rem"><div id="m" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.75rem;color:var(--muted)">Months</div></div><div class="box" style="text-align:center;padding:1rem"><div id="d" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.75rem;color:var(--muted)">Days</div></div><div class="box" style="text-align:center;padding:1rem"><div id="t" style="font-size:1.5rem;font-weight:700;color:var(--primary)">0</div><div style="font-size:.75rem;color:var(--muted)">Total Days</div></div></div></div></div></main><footer><div class="container"><p>© 2026 ToolKit</p><div><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a><a href="/terms.html">Terms</a></div></div></footer><script src="/js/main.js"></script><script>
+function calc(){
+var dob=document.getElementById("dob").value;
+if(!dob)return;
+var birth=new Date(dob);
+var now=new Date();
+var diff=now-birth;
+var days=Math.floor(diff/(1000*60*60*24));
+var years=Math.floor(days/365.25);
+var months=Math.floor((days%365.25)/30.44);
+var remDays=Math.floor(days-(years*365.25+months*30.44));
+document.getElementById("y").textContent=years;
+document.getElementById("m").textContent=months;
+document.getElementById("d").textContent=remDays;
+document.getElementById("t").textContent=days;
+document.getElementById("out").style.display="block";
+}
+</script></body></html>
